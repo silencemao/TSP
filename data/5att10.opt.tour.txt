@@ -1,0 +1,7 @@
+NAME : att10.opt.tour
+COMMENT : Optimum solution  for att10
+TYPE : TOUR
+DIMENSION : 10
+TOUR_SECTION
+-1
+EOF
