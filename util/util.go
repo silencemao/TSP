@@ -1,6 +1,7 @@
 package util
 
 import (
+	"TSP/TSPSolution"
 	"TSP/ioinfo"
 	"fmt"
 	"io/ioutil"
@@ -104,4 +105,14 @@ func GetFileLines(filePath string) ([]string, error) {
 		result = append(result, lineStr)
 	}
 	return result, nil
+}
+
+
+func CopySolution(pSolution TSPSolution.TSPSolution) TSPSolution.TSPSolution {
+	pNewSolution := TSPSolution.TSPSolution{}
+	dataDst := make([]ioinfo.Data, len(pSolution.GetPath()))
+	copy(dataDst, pSolution.GetPath())
+	pNewSolution.SetPath(dataDst)
+	pNewSolution.SetLength(pSolution.GetLength())
+	return pNewSolution
 }
