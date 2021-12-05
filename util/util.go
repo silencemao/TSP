@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"math"
+	"math/rand"
 	"strconv"
 	"strings"
 )
@@ -115,4 +116,19 @@ func CopySolution(pSolution TSPSolution.TSPSolution) TSPSolution.TSPSolution {
 	pNewSolution.SetPath(dataDst)
 	pNewSolution.SetLength(pSolution.GetLength())
 	return pNewSolution
+}
+
+func RouletteSelect(weights []float32) int {
+	var sum float32
+	for _, w := range weights {
+		sum += w
+	}
+	rweight := rand.Float32() * sum
+	for i, w := range weights {
+		rweight -= w
+		if rweight < 0 {
+			return i
+		}
+	}
+	return len(weights)-1
 }
